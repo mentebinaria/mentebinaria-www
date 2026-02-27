@@ -1,4 +1,4 @@
-mentebinaria
-============
+# mentebinaria-www
 
-Source code of mentebinaria.com.br (can be turned into a small CMS in the future)
+Source code for an ancient version of mentebinaria.com.br (could have benn tourned into a small CMS, but it didn't).
+
