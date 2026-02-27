@@ -13,9 +13,10 @@ function load_content($category) {
 	$db = new Database();
 	$result = $db->search("SELECT * FROM categories WHERE title LIKE '". $category ."';");
 	$r = mysql_fetch_array($result);
-	
-	if ($r['id'] < 1)
+
+	if ($r['id'] < 1) {
 		die('invalid category');
+	}
 
 	$show_timestamp = $r['show_timestamp'];
 
@@ -45,23 +46,25 @@ function menu($name=null)
 	// número de itens no menu
 	$num_items = count($cfg_pages);
 
-	foreach ($cfg_pages as $index => $value)
-	{
+	foreach ($cfg_pages as $index => $value) {
 		$item_name = is_numeric($index) ? $value : $index;
 
 		// highlight current menu item
-		if (isset($name) && $name == $item_name)
+		if (isset($name) && $name == $item_name) {
 			$data .= "<a style=\"color: #00cc66;\" href=\"$value\">$item_name</a>";
-		else
+		} else {
 			$data .= "<a href=\"$value\">$item_name</a>";
+		}
 
 		// put a separator among items, excepting the last one
-		if ($i == $num_items)
+		if ($i == $num_items) {
 			$data .= "\n";
-		else if ($i == 7 && $cfg_menu_linebreak)
+
+		} else if ($i == 7 && $cfg_menu_linebreak) {
 			$data .= "<br />\n";
-		else
+		} else {
 			$data .= "\n $cfg_menu_separator ";
+		}
 
 		$i++;
 	}

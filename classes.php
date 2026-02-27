@@ -6,7 +6,7 @@ class Category {
 	var $title;
 	var $description;
 	var $parent; // id
-	
+
 	public function get_category_by_name($name) {
 		$this->id = 3;
 		$this->name = 'Música';
@@ -19,7 +19,7 @@ class Category {
 class Article extends Category {
 
 	var $author;
-	var $timestamp;	
+	var $timestamp;
 	var $content;
 
 	public function get_article_by_id($id) {
@@ -37,8 +37,9 @@ class Database {
 		$result = false;
 		$conn = mysql_pconnect($cfg_database_host, $cfg_database_user, $cfg_database_password);
 
-		if (!$conn)
+		if (!$conn) {
 			die('unable to connect to database');
+		}
 
 		$result = mysql_selectdb($cfg_database_name, $conn) or die('unable to find the database');
 		$this->link = $conn;
@@ -46,11 +47,12 @@ class Database {
 	}
 
 	public function search($query) {
-		if (!$this->link)
+		if (!$this->link) {
 			$this->connect();
+		}
 
 		$result = mysql_query($query, $this->link) or die('invalid query');
-		return $result;		
+		return $result;
 	}
 }
 

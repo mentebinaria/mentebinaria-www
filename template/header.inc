@@ -6,23 +6,31 @@ if (isset($_GET['p']))
 
 <!doctype html>
 <html>
- <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="<?php echo $cfg_stylesheet; ?>">
-  <link rel="alternate" type="application/rss+xml" title="<?php echo $cfg_sitename; ?>" href="rss">
-  <title><?php echo $pagename ? '(*mentebinaria).' . $pagename : $cfg_sitename; ?></title>
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="<?= $cfg_stylesheet; ?>">
+		<link rel="alternate" type="application/rss+xml" title="<?= $cfg_sitename ?>" href="rss">
+		<title>
+			<?= $pagename ? '(*mentebinaria).' . $pagename : $cfg_sitename; ?>
+		</title>
+	</head>
 
- <body>
-  <div id="box">
-   <div id="logo">
-    <? echo logo(); ?>
-   </div>
-   
-   <? if ($cfg_show_random_quotes) { ?>
-   <div id="frase">
-    <? echo frase(); ?>
-   </div>
-   <? } ?>
- 
-   <div id="menu"><? echo menu($pagename); ?></div>
+	<body>
+		<div id="box">
+		<div id="logo">
+			<?= logo() ?>
+		</div>
+
+		<?php
+			if ($cfg_show_random_quotes) {
+		?>
+				<div id="frase">
+					<?= frase() ?>
+				</div>
+		<?php
+			}
+		?>
+
+		<div id="menu">
+			<?= menu($pagename) ?>
+		</div>
